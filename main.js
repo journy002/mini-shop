@@ -6,7 +6,7 @@ function callData() {
 
 function createHTMLString(item) {
   return `
-        <li>
+        <li class='item'>
             <img src='${item.image}' alt='${item.type}'/>
             <span>${item.gender}, ${item.size}</span>
         </li>
@@ -32,11 +32,15 @@ function onBtn(event, items) {
 }
 
 function setEventListener(items) {
+  const logo = document.querySelector(".main__logo");
   const buttons = document.querySelector(".buttons");
+  logo.addEventListener("click", () => displayItem(items));
   buttons.addEventListener("click", (event) => onBtn(event, items));
 }
 
-callData().then((items) => {
-  displayItem(items);
-  setEventListener(items);
-});
+callData()
+  .then((items) => {
+    displayItem(items);
+    setEventListener(items);
+  })
+  .catch((e) => console.log(e));
