@@ -24,6 +24,7 @@ function onBtn(event, items) {
   const value = target.value;
 
   if (key === null || value === null) {
+    console.log("null");
     return;
   }
 
